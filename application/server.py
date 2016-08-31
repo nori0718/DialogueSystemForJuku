@@ -1,4 +1,7 @@
 # -*- coding: utf-8 -*-
+import sys, os
+sys.path.append(os.path.join(os.path.dirname('__file__'),'./../'))
+
 import tornado.ioloop
 import tornado.web
 import tornado.websocket
@@ -15,7 +18,7 @@ class MessageServer(tornado.websocket.WebSocketHandler):
     def open(self):
         print('on open')
         self.bots[self] = Bot()
-        self.write_message('料理のジャンルや場所をおっしゃってください。')
+        self.write_message('こんにちは！')
 
     def on_message(self, message):
         print('on message')
@@ -27,7 +30,18 @@ class MessageServer(tornado.websocket.WebSocketHandler):
         print('on close')
         del self.bots[self]
 
-application = tornado.web.Application([(r'/ws', MessageServer)])
+class ManagementHandler(tornado.web.RequestHandler):
+    def get(self):
+        self.write("Hello, world")
+
+#sys.path.append('./../')
+application = tornado.web.Application([
+            (r'/ws', MessageServer),
+            (r'/', ManagementHandler),
+        ],
+        template_path=os.path.join(os.getcwd(),  "templates"),
+        static_path=os.path.join(os.getcwd(),  "static"),
+        )
 
 if __name__ == '__main__':
     application.listen(8080)

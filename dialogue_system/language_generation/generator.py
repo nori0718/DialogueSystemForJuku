@@ -19,11 +19,16 @@ class LanguageGenerator(object):
             sent += '名前を教えてください！'
 
         # INFORM
-        elif sys_act_type == 'INFORM_PRIVATE_COMMENT_FROM_TUTOR':
-            sent += 'チューターからコメントが届いています。%s'
-        elif sys_act_type == 'INFORM_PRIVATE_COMMENT_FROM_TUTOR':
-            sent += 'コメントはありませんでした。'
-
+        elif sys_act_type == 'RETURN_NAME_AND_COMMENT':
+            if dialogue_act['PRIVATE_COMMENT_FROM_TUTOR']!= '':
+                sent += 'チューターからコメントが届いています。{0}'.format(dialogue_act['PRIVATE_COMMENT_FROM_TUTOR'])
+            if len(dialogue_act['CLASS_COMMENT_FROM_TEACHER'])!=0:
+                sent += '授業についてコメントがありました。お伝えしますね。'
+                for t in dialogue_act['CLASS_COMMENT_FROM_TEACHER']:
+                    sent += '%s先生より。%s'%t
+            sent += 'コメントは終わりです。今日は体調はどうですか？'
+            
+        
         # CHAT
         elif sys_act_type == 'CHAT':
             sent += dialogue_act['utt']

@@ -3,7 +3,7 @@ import re
 
 
 #from dialogue_system.knowledge.reader import read_names, read__private_comments, read_lectures
-from dialogue_system.knowledge.reader import read_names
+from dialogue_system.knowledge.reader import read_names, read_private_comment_from_tutor, read_class_comment_from_teacher
 
 
 class RuleBasedAttributeExtractor(object):
@@ -12,10 +12,11 @@ class RuleBasedAttributeExtractor(object):
         self.__names = read_names()
 
     def extract(self, text):
+        name = self.__extract_name(text)
         attribute = {
-                'NAME': self.__extract_name(text), 
-                'PRIVATE_COMMENT_FROM_TUTOR': self.__extract_private_comment_from_tutor(text),
-                'LECTURE': self.__extract_lecture(text)
+                'NAME': name, 
+                'PRIVATE_COMMENT_FROM_TUTOR': read_private_comment_from_tutor(name),
+                'CLASS_COMMENT_FROM_TEACHER': read_class_comment_from_teacher(name),
                 }
 
         return attribute
@@ -26,17 +27,3 @@ class RuleBasedAttributeExtractor(object):
         name = names[0] if len(names) > 0 else ''
         return name
 
-    def __extract_private_comment_from_tutor(self, text):
-        #if self.get_name() == '':
-        #    return ''
-        #private_comments = read_private_comments(self.__state['name'])
-        #private_comments = [i if i.endswith('。') else i+'。'  for i in private_comments]
-        #return ''.join(private_comments)
-        return
-
-    def __extract_lecture(self, text):
-        #if self.get_name() == '':
-        #    return ''
-        #lectures = read_lectures(self.__state['name'],day)
-        #return lectures
-        return 

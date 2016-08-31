@@ -15,16 +15,16 @@ class DialogueManager(object):
 
     def select_action(self, dialogue_act):
         sys_act = deepcopy(dialogue_act)
-        if dialogue_act['user_act_type'] == 'OTHER':
+        if not self.dialogue_state.has('NAME'):
+            sys_act['sys_act_type'] = 'REQUEST_NAME'
+        elif dialogue_act['user_act_type'] == 'NAME':
+            sys_act['sys_act_type'] = 'RETURN_NAME_AND_COMMENT'
+        elif dialogue_act['user_act_type'] == 'OTHER':
             api = DocomoDialogAPI()
             reply = api.reply(dialogue_act['utt'])
             sys_act['sys_act_type'] = 'CHAT'
             sys_act['utt'] = reply
-        elif not self.dialogue_state.has('NAME'):
-            sys_act['sys_act_type'] = 'REQUEST_NAME'
         else:
-            name = self.dialogue_state.get_name()
-            sys_act['sys_act_type'] = 'INFORM_PRIVATE_COMMENT_FROM_TUTOR'
             self.dialogue_state.clear()
 
         return sys_act
