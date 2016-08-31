@@ -2,7 +2,6 @@
 from copy import deepcopy
 
 from dialogue_system.dialogue_management.state import DialogueState
-from dialogue_system.backend.apis.hotpepper import HotPepperGourmetAPI
 from dialogue_system.backend.apis.docomo_dialogue import DocomoDialogAPI
 
 
