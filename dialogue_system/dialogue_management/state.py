@@ -1,27 +1,33 @@
 # -*- coding: utf-8 -*-
 
-
 class DialogueState(object):
 
     def __init__(self):
-        self.__state = {'GENRE': None, 'LOCATION': None, 'MAXIMUM_AMOUNT': None}
+        self.__state = {
+                'NAME'                       : None,
+                'PRIVATE_COMMENT_FROM_TUTOR' : None,
+                'LECTURE'                    : None,
+                }
+
+    def keys(self):
+        return self.__state.keys()
 
     def update(self, dialogue_act):
-        self.__state['GENRE'] = dialogue_act.get('GENRE', self.__state['GENRE'])
-        self.__state['LOCATION'] = dialogue_act.get('LOCATION', self.__state['LOCATION'])
-        self.__state['MAXIMUM_AMOUNT'] = dialogue_act.get('MAXIMUM_AMOUNT', self.__state['MAXIMUM_AMOUNT'])
+        for key, value in self.__state.items():
+            self.__state[key] = dialogue_act.get(key, self.__state[key])
+        return
 
     def has(self, name):
         return self.__state.get(name, None) != None
 
-    def get_area(self):
-        return self.__state['LOCATION']
+    def get_name(self):
+        return self.__state['NAME']
 
-    def get_food(self):
-        return self.__state['GENRE']
+    def get_private_comment_from_tutor(self):
+        return self.__state['PRIVATE_COMMENT_FROM_TUTOR']
 
-    def get_budget(self):
-        return self.__state['MAXIMUM_AMOUNT']
+    def get_lecture(self):
+        return self.__state['LECTURE']
 
     def clear(self):
         self.__init__()

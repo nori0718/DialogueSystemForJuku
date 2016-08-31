@@ -2,40 +2,41 @@
 import re
 
 
-from dialogue_system.knowledge.reader import read_genres, read_locations
-from dialogue_system.language_understanding.utils.utils import kansuji2arabic
+#from dialogue_system.knowledge.reader import read_names, read__private_comments, read_lectures
+from dialogue_system.knowledge.reader import read_names
 
 
 class RuleBasedAttributeExtractor(object):
 
     def __init__(self):
-        self.__locations = read_locations()
-        self.__genres = read_genres()
+        self.__names = read_names()
 
     def extract(self, text):
-        attribute = {'LOCATION': self.__extract_location(text), 'GENRE': self.__extract_genre(text),
-                     'MAXIMUM_AMOUNT': self.__extract_budget(text)}
+        attribute = {
+                'NAME': self.__extract_name(text), 
+                'PRIVATE_COMMENT_FROM_TUTOR': self.__extract_private_comment_from_tutor(text),
+                'LECTURE': self.__extract_lecture(text)
+                }
 
         return attribute
 
-    def __extract_location(self, text):
-        locations = [loc for loc in self.__locations if loc in text]
-        locations.sort(key=len, reverse=True)
-        location = locations[0] if len(locations) > 0 else ''
+    def __extract_name(self, text):
+        names = [name for name in self.__names if name in text]
+        names.sort(key=len, reverse=True)
+        name = names[0] if len(names) > 0 else ''
+        return name
 
-        return location
+    def __extract_private_comment_from_tutor(self, text):
+        #if self.get_name() == '':
+        #    return ''
+        #private_comments = read_private_comments(self.__state['name'])
+        #private_comments = [i if i.endswith('。') else i+'。'  for i in private_comments]
+        #return ''.join(private_comments)
+        return
 
-    def __extract_genre(self, text):
-        for food_genre, foods in self.__genres.items():
-            for food in foods:
-                if food in text:
-                    return food_genre
-        return ''
-
-    def __extract_budget(self, text):
-        pattern = r'\d+円|[一二三四五六七八九十壱弐参拾百千万萬億兆〇]+円'
-        match_obj = re.findall(pattern, text)
-        budget_str = match_obj[0][:-1] if len(match_obj) > 0 else ''
-        budget_int = kansuji2arabic(budget_str)
-
-        return budget_int
+    def __extract_lecture(self, text):
+        #if self.get_name() == '':
+        #    return ''
+        #lectures = read_lectures(self.__state['name'],day)
+        #return lectures
+        return 
