@@ -13,7 +13,13 @@ class LanguageGenerator(object):
         # Confirmation
         if 'NAME' in dialogue_act:
             sent += '{0}さんですね？おはようございます。'.format(dialogue_act['NAME'])
-
+        elif 'CONDITION' in dialogue_act:
+            if dialogue_act['CONDITION']=='LOW':
+                sent += '無理をしないでね。体調が悪くなったらすぐに職員に相談してね。' 
+            elif dialogue_act['CONDITION']=='NEUTRAL':
+                sent += '今日も頑張ろう。'
+            elif dialogue_act['CONDITION']=='HIGH':
+                sent += '絶好調だね。バリバリ勉強していこう。'
         # REQUEST
         if sys_act_type == 'REQUEST_NAME':
             sent += '名前を教えてください！'
@@ -28,6 +34,8 @@ class LanguageGenerator(object):
                     sent += '%s先生より。%s'%t
             sent += 'コメントは終わりです。今日は体調はどうですか？'
             
+        elif sys_act_type == 'IS_QUESTION':
+            sent += '最近何か質問とかはある？'
         
         # CHAT
         elif sys_act_type == 'CHAT':

@@ -6,7 +6,9 @@ class DialogueState(object):
         self.__state = {
                 'NAME'                       : None,
                 'PRIVATE_COMMENT_FROM_TUTOR' : None,
-                'LECTURE'                    : None,
+                'CLASS_COMMENT_FROM_TEACHER' : None,
+                'CONDITION'                  : None,
+                'IS_ASKED_CONDITION'         : False,
                 }
 
     def keys(self):
@@ -26,8 +28,8 @@ class DialogueState(object):
     def get_private_comment_from_tutor(self):
         return self.__state['PRIVATE_COMMENT_FROM_TUTOR']
 
-    def get_lecture(self):
-        return self.__state['LECTURE']
+    def get_class_comment_from_teacher(self):
+        return self.__state['CLASS_COMMENT_FROM_TEACHER']
 
     def clear(self):
         self.__init__()

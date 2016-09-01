@@ -19,6 +19,8 @@ class DialogueManager(object):
             sys_act['sys_act_type'] = 'REQUEST_NAME'
         elif dialogue_act['user_act_type'] == 'NAME':
             sys_act['sys_act_type'] = 'RETURN_NAME_AND_COMMENT'
+        elif dialogue_act['user_act_type'] == 'CONDITION':
+            sys_act['sys_act_type'] = 'IS_QUESTION'
         elif dialogue_act['user_act_type'] == 'OTHER':
             api = DocomoDialogAPI()
             reply = api.reply(dialogue_act['utt'])

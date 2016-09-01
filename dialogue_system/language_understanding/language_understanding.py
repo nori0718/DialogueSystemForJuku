@@ -11,8 +11,8 @@ class RuleBasedLanguageUnderstanding(object):
         self.__estimator = RuleBasedDialogueActTypeEstimator()
         self.__extractor = RuleBasedAttributeExtractor()
 
-    def execute(self, sent):
-        attribute = self.__extractor.extract(sent)
+    def execute(self, bot, sent):
+        attribute = self.__extractor.extract(bot, sent)
         act_type = self.__estimator.estimate(attribute)
 
         dialogue_act = {'user_act_type': act_type, 'utt': sent}

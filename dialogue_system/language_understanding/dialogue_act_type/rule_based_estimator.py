@@ -7,5 +7,7 @@ class RuleBasedDialogueActTypeEstimator(object):
     def estimate(self, attribute):
         if attribute['NAME'] != '':
             return 'NAME'
+        if attribute['CONDITION'] != '':
+            return 'CONDITION'
         else:
             return 'OTHER'
