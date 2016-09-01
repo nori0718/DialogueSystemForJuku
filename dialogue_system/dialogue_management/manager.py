@@ -21,7 +21,6 @@ class DialogueManager(object):
             sys_act['sys_act_type'] = 'RETURN_NAME_AND_COMMENT'
         elif dialogue_act['user_act_type'] == 'CONDITION':
             sys_act['sys_act_type'] = 'IS_QUESTION'
-
         elif not self.dialogue_state.has('SUBJECT'):
             sys_act['sys_act_type'] = 'REQUEST_SUBJECT'
         elif not self.dialogue_state.has('TEACHER'):

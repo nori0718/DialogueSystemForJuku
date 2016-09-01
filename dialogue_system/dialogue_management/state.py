@@ -4,7 +4,7 @@ class DialogueState(object):
 
     def __init__(self):
         self.__state = {
-                'NAME'                       : '',
+                'NAME'                       : None,
                 'PRIVATE_COMMENT_FROM_TUTOR' : '',
                 'CLASS_COMMENT_FROM_TEACHER' : '',
                 'CONDITION'                  : '',

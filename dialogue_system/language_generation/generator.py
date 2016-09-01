@@ -61,9 +61,9 @@ class LanguageGenerator(object):
         elif sys_act_type == 'REQUEST_TEACHER':
             sent += '質問したい先生がいたら教えてください。'
         elif sys_act_type == 'REQUEST_REPLY':
-            sent += '質問内容を専用の養子にまとめてくれた？'
+            sent += '質問内容を専用の用紙にまとめてくれた？'
         elif sys_act_type == 'REQUEST_PICTURE':
-            sent += '記憶したいから見せてくれるかな？'
+            sent += '記憶したいから見せてくれるかな？準備が整ったら頑張ってって言ってね'
 
 
         # CHAT
