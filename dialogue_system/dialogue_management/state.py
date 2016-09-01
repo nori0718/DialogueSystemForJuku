@@ -10,6 +10,13 @@ class DialogueState(object):
                 'CONDITION'                  : '',
                 'IS_ASKED_CONDITION'         : False,
                 }
+        self.__is_processed = {
+                'NAME' : False,
+                'PRIVATE_COMMENT_FROM_TUTOR': False,
+                'CLASS_COMMENT_FROM_TEACHER': False,
+                'CONDITION' : False,
+                'OTHER' : 0,
+        }
 
     def keys(self):
         return self.__state.keys()
@@ -33,6 +40,9 @@ class DialogueState(object):
 
     def get_is_asked_condition(self):
         return self.__state['IS_ASKED_CONDITION']
+
+    def is_processed(self, name):
+        return self.__is_processed[name]
 
     def clear(self):
         self.__init__()
