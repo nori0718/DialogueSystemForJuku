@@ -19,10 +19,8 @@ class RuleBasedAttributeExtractor(object):
                 'NAME': name, 
                 'PRIVATE_COMMENT_FROM_TUTOR': read_private_comment_from_tutor(name),
                 'CLASS_COMMENT_FROM_TEACHER': read_class_comment_from_teacher(name),
-                'CONDITION':self.__extract_condition(text, bot),
+                'CONDITION': self.__extract_condition(text, bot),
                 }
-        print(attribute)
-
         return attribute
 
     def __extract_name(self, text):
@@ -32,10 +30,10 @@ class RuleBasedAttributeExtractor(object):
         return name
     
     def __extract_condition(self, text, bot):
-        if bot.manager.dialogue_state.get_name() != '' and not bot.manager.dialogue_state.has('IS_ASKED_CONDITION'):
+        if bot.manager.dialogue_state.get_is_asked_condition():
+            return ''
+        if bot.manager.dialogue_state.get_name() != '': 
             bot.manager.dialogue_state.update({'IS_ASKED_CONDITION':True})
-            print('a')
             return read_condition(text)
         else:
-            print('b')
             return ''

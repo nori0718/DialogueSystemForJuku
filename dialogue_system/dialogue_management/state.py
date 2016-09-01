@@ -4,10 +4,10 @@ class DialogueState(object):
 
     def __init__(self):
         self.__state = {
-                'NAME'                       : None,
-                'PRIVATE_COMMENT_FROM_TUTOR' : None,
-                'CLASS_COMMENT_FROM_TEACHER' : None,
-                'CONDITION'                  : None,
+                'NAME'                       : '',
+                'PRIVATE_COMMENT_FROM_TUTOR' : '',
+                'CLASS_COMMENT_FROM_TEACHER' : '',
+                'CONDITION'                  : '',
                 'IS_ASKED_CONDITION'         : False,
                 }
 
@@ -30,6 +30,9 @@ class DialogueState(object):
 
     def get_class_comment_from_teacher(self):
         return self.__state['CLASS_COMMENT_FROM_TEACHER']
+
+    def get_is_asked_condition(self):
+        return self.__state['IS_ASKED_CONDITION']
 
     def clear(self):
         self.__init__()
