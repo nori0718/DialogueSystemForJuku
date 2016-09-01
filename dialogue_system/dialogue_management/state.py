@@ -19,10 +19,6 @@ class DialogueState(object):
         for key, value in self.__state.items():
             self.__state[key] = dialogue_act.get(key, self.__state[key])
 
-        self.__state['TEACHER'] = dialogue_act.get('TEACHER', self.__state['TEACHER'])
-        self.__state['SUBJECT'] = dialogue_act.get('SUBJECT', self.__state['SUBJECT'])
-        self.__state['REPLY'] = dialogue_act.get('REPLY', self.__state['REPLY'])
-        self.__state['PICTURE'] = dialogue_act.get('PICTURE', self.__state['PICTURE'])
 
         return
 
