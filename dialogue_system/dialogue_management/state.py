@@ -9,6 +9,7 @@ class DialogueState(object):
                 'CLASS_COMMENT_FROM_TEACHER' : '',
                 'CONDITION'                  : '',
                 'IS_ASKED_CONDITION'         : False,
+                'TEACHER': None, 'SUBJECT': None, 'REPLY': None, 'PICTURE': None
                 }
 
     def keys(self):
@@ -17,7 +18,14 @@ class DialogueState(object):
     def update(self, dialogue_act):
         for key, value in self.__state.items():
             self.__state[key] = dialogue_act.get(key, self.__state[key])
+
+        self.__state['TEACHER'] = dialogue_act.get('TEACHER', self.__state['TEACHER'])
+        self.__state['SUBJECT'] = dialogue_act.get('SUBJECT', self.__state['SUBJECT'])
+        self.__state['REPLY'] = dialogue_act.get('REPLY', self.__state['REPLY'])
+        self.__state['PICTURE'] = dialogue_act.get('PICTURE', self.__state['PICTURE'])
+
         return
+
 
     def has(self, name):
         return self.__state.get(name, None) != None
@@ -33,6 +41,18 @@ class DialogueState(object):
 
     def get_is_asked_condition(self):
         return self.__state['IS_ASKED_CONDITION']
+
+
+    def get_area(self):
+        return self.__state['SUBJECT']
+
+    def get_food(self):
+        return self.__state['TEACHER']
+
+    def get_budget(self):
+        return self.__state['REPLY']
+
+
 
     def clear(self):
         self.__init__()

@@ -10,6 +10,23 @@ class LanguageGenerator(object):
         sent = ''
         sys_act_type = dialogue_act['sys_act_type']
 
+
+        if 'SUBJECT' in dialogue_act:
+            sent += '質問の科目は{0}ですね。'.format(dialogue_act['SUBJECT'])
+        if 'TEACHER' in dialogue_act:
+            sent += '{0}先生ですね。'.format(dialogue_act['TEACHER'])
+        if 'REPLY' in dialogue_act:
+            judge = '{0}'.format(dialogue_act['REPLY'])
+            if judge in "yes":
+                sent += "ありがとう！記憶するから僕に見せてくれるかな？"
+            elif judge in "no":
+                sent += "まとめてからまた持って来てね"
+            else:
+                sent += "質問内容がよくわからないな"
+        if 'PICTURE' in dialogue_act:
+            sent += '記憶したよ'
+
+
         # Confirmation
         if 'NAME' in dialogue_act:
             sent += '{0}さんですね？おはようございます。'.format(dialogue_act['NAME'])
@@ -36,7 +53,19 @@ class LanguageGenerator(object):
             
         elif sys_act_type == 'IS_QUESTION':
             sent += '最近何か質問とかはある？'
-        
+
+
+
+        if sys_act_type == 'REQUEST_SUBJECT':
+            sent += '質問の科目は何ですか？'
+        elif sys_act_type == 'REQUEST_TEACHER':
+            sent += '質問したい先生がいたら教えてください。'
+        elif sys_act_type == 'REQUEST_REPLY':
+            sent += '質問内容を専用の養子にまとめてくれた？'
+        elif sys_act_type == 'REQUEST_PICTURE':
+            sent += '記憶したいから見せてくれるかな？'
+
+
         # CHAT
         elif sys_act_type == 'CHAT':
             sent += dialogue_act['utt']
