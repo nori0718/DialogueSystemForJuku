@@ -12,6 +12,7 @@ class Bot(object):
         self.manager = DialogueManager()
 
     def reply(self, sent):
+        print(sent)
         dialogue_act = self.language_understanding.execute(self,sent)
 
         self.manager.update_dialogue_state(dialogue_act)
