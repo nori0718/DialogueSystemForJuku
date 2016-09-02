@@ -29,6 +29,7 @@ class LanguageGenerator(object):
 
     def __inform(self, sys_act_type):
         # INFORM
+        sent = ''
         if sys_act_type == 'RETURN_NAME_AND_COMMENT':
             if dialogue_act['PRIVATE_COMMENT_FROM_TUTOR']!= '':
                 sent += 'チューターからコメントが届いています。{0}'.format(dialogue_act['PRIVATE_COMMENT_FROM_TUTOR'])
