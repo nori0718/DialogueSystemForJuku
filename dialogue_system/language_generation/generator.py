@@ -24,7 +24,7 @@ class LanguageGenerator(object):
         sent = ''
         # REQUEST
         if sys_act_type == 'REQUEST_NAME':
-            sent += '名前を教えてください！'       
+            sent += '名前を教えてください！'
         return sent
 
     def __inform(self, sys_act_type):
@@ -40,13 +40,13 @@ class LanguageGenerator(object):
 
         elif sys_act_type == 'IS_QUESTION':
             sent += '最近何か質問とかはある？あったら科目を教えてね。'
-        
         # CHAT
         elif sys_act_type == 'CHAT':
             sent += dialogue_act['utt']
         else:
             print('Error')
             sys.exit(-1)
+        return sent
 
     def generate_sentence(self, dialogue_act):
         sent = ''
@@ -54,7 +54,6 @@ class LanguageGenerator(object):
 
         sent += self.__confirmation(dialogue_act)
         sent += self.__request(sys_act_type)
-        sent += self.__inform(sys_act_type)
         sent += self.__inform(sys_act_type)
 
         return sent
