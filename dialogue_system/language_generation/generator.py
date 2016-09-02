@@ -43,9 +43,6 @@ class LanguageGenerator(object):
         # CHAT
         elif sys_act_type == 'CHAT':
             sent += dialogue_act['utt']
-        else:
-            print('Error')
-            sys.exit(-1)
         return sent
 
     def generate_sentence(self, dialogue_act):
@@ -55,5 +52,8 @@ class LanguageGenerator(object):
         sent += self.__confirmation(dialogue_act)
         sent += self.__request(sys_act_type)
         sent += self.__inform(sys_act_type)
+        if sent == '':
+            print('Error')
+            sys.exit(-1)
 
         return sent
