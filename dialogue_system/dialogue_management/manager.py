@@ -27,7 +27,7 @@ class DialogueManager(object):
             reply = api.reply(dialogue_act['utt'])
             sys_act['sys_act_type'] = 'CHAT'
             sys_act['utt'] = reply
-            sys_act['sys_act_type'] = 'REQUEST_NAME'
+            #sys_act['sys_act_type'] = 'REQUEST_NAME'
         else:
             self.dialogue_state.clear()
 
