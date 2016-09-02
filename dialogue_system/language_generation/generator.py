@@ -6,7 +6,7 @@ class LanguageGenerator(object):
     def __init__(self):
         pass
 
-    def __confirmation(self, dialogue_act)
+    def __confirmation(self, dialogue_act):
         sent = ''
         # Confirmation
         if 'NAME' in dialogue_act:
