@@ -18,6 +18,7 @@ class RuleBasedAttributeExtractor(object):
                 'CLASS_COMMENT_FROM_TEACHER': read_class_comment_from_teacher(name),
                 'CONDITION': self.__extract_condition(text, bot),
                 }
+        print(attribute)
         return attribute
 
     def __extract_name(self, text):
