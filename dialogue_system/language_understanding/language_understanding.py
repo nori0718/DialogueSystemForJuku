@@ -12,6 +12,7 @@ class RuleBasedLanguageUnderstanding(object):
         self.__extractor = RuleBasedAttributeExtractor()
 
     def execute(self, bot, sent):
+        print(sent)
         attribute = self.__extractor.extract(bot, sent)
         act_type = self.__estimator.estimate(attribute)
 
