@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
 import sys, os
-sys.path.append(os.path.join(os.path.dirname('__file__'),'./../'))
 
 import tornado.ioloop
 import tornado.web
@@ -34,7 +33,6 @@ class ManagementHandler(tornado.web.RequestHandler):
     def get(self):
         self.write("Hello, world")
 
-#sys.path.append('./../')
 application = tornado.web.Application([
             (r'/ws', MessageServer),
             (r'/', ManagementHandler),

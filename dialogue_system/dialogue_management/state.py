@@ -8,13 +8,15 @@ class DialogueState(object):
                 'PRIVATE_COMMENT_FROM_TUTOR' : '',
                 'CLASS_COMMENT_FROM_TEACHER' : '',
                 'CONDITION'                  : '',
-                'IS_ASKED_CONDITION'         : False,
+                'IS_ASKED_CONDITION'         : '',
                 }
         self.__is_processed = {
-                'NAME' : False,
-                'PRIVATE_COMMENT_FROM_TUTOR': False,
-                'CLASS_COMMENT_FROM_TEACHER': False,
-                'CONDITION' : False,
+                'IS_ASKED_NAME' : False,
+                'LISTEN_TO_NAME' : False,
+                'LISTEN_TO_COMMENT_FROM_TUTOR': False,
+                'IS_SEND_FROM_TEACHER': False,
+                'IS_ASKED_CONDITION' : False,
+                'LISTEN_TO_RESPONSE_TO_CONDITION': False,
                 'OTHER' : 0,
         }
 
@@ -26,8 +28,9 @@ class DialogueState(object):
             self.__state[key] = dialogue_act.get(key, self.__state[key])
         return
 
+
     def has(self, name):
-        return self.__state.get(name, None) != None
+        return self.__state.get(name, None) != ''
 
     def get_name(self):
         return self.__state['NAME']

@@ -109,7 +109,7 @@ def read_condition(text):
     score,number = analyze(pos_dic['形容詞'],adjswords,adjspoint,score, number)
     score,number = analyze(pos_dic['副詞'],advswords,advspoint,score, number)
     if number > 0:
-        avg_score = score/number
+        avg_score = score / number
         if avg_score < -0.3:
             return 'LOW'
         elif -0.3 <= avg_score <= 0.3:

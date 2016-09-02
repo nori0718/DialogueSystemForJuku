@@ -20,3 +20,5 @@ class DocomoKnowledge(object):
         api_key = os.environ.get('DOCOMO_DIALOGUE_API_KEY', api_key)
         self.__client = Client(apikey=api_key)
         
+class Watson():
+	

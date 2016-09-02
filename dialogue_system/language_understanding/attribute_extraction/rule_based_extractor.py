@@ -1,8 +1,5 @@
 # -*- coding: utf-8 -*-
 import re
-
-
-#from dialogue_system.knowledge.reader import read_names, read__private_comments, read_lectures
 from dialogue_system.knowledge.reader import read_names, read_private_comment_from_tutor, read_class_comment_from_teacher, read_condition
 
 import MeCab
