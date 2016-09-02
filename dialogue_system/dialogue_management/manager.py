@@ -15,8 +15,7 @@ class DialogueManager(object):
 
     def select_action(self, dialogue_act):
         sys_act = deepcopy(dialogue_act)
-        if self.update_dialogue_state
-        
+
         if not self.dialogue_state.has('NAME'):
             sys_act['sys_act_type'] = 'REQUEST_NAME'
         elif dialogue_act['user_act_type'] == 'NAME':
