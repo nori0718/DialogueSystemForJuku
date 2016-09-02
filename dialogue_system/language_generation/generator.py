@@ -52,9 +52,9 @@ class LanguageGenerator(object):
         sent = ''
         sys_act_type = dialogue_act['sys_act_type']
 
-        sent += __confirmation(dialogue_act)
-        sent += __request(sys_act_type)
-        sent += __inform(sys_act_type)
-        sent += __inform(sys_act_type)
+        sent += self.__confirmation(dialogue_act)
+        sent += self.__request(sys_act_type)
+        sent += self.__inform(sys_act_type)
+        sent += self.__inform(sys_act_type)
 
         return sent
