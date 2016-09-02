@@ -27,7 +27,7 @@ class LanguageGenerator(object):
             sent += '名前を教えてください！'
         return sent
 
-    def __inform(self, sys_act_type):
+    def __inform(self, dialogue_act, sys_act_type):
         # INFORM
         sent = ''
         if sys_act_type == 'RETURN_NAME_AND_COMMENT':
@@ -52,7 +52,7 @@ class LanguageGenerator(object):
 
         sent += self.__confirmation(dialogue_act)
         sent += self.__request(sys_act_type)
-        sent += self.__inform(sys_act_type)
+        sent += self.__inform(dialogue_act, sys_act_type)
         if sent == '':
             print('Error')
             sys.exit(-1)
